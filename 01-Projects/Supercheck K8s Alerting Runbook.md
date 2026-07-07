@@ -15,9 +15,8 @@ date: 2026-07-07
 flowchart TD
     subgraph K3s["K3s Cluster (3 regions: EU / US / APAC)"]
         Prom["Prometheus<br/>Custom Rules"] --> AM["Alertmanager<br/>(HA x2)"]
-        AM --> Slack["Slack<br/>#supercheck-alerts<br/>#supercheck-alerts-critical"]
         AM --> Telegram["`supercheck_alerts_bot`<br/>→ Hermes Ops / Agent Alerts"]
-        AM --> n8n["n8n Webhook"]
+        AM --> n8n["n8n Webhook<br/>(Tailscale-only)"]
     end
 
     n8n --> Trello["Trello Card<br/>Master HQ → Agent Queue"]
